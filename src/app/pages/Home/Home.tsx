@@ -1,45 +1,29 @@
 "use client"
 
-const comment = {
-	id: 1,
-	content:
-		"Impressive! Though it seems the drag feature could be improved. But overall it looks incredible. You've nailed the design and the responsiveness at various breakpoints works really well.",
-	createdAt: "1 month ago",
-	score: 12,
-	user: {
-		image: {
-			png: "/avatars/image-amyrobson.png",
-			webp: "/avatars/image-amyrobson.webp",
-		},
-		username: "amyrobson",
-	},
-	replies: [],
-}
+import mock from "../../../../mock/data.json"
+import { ContainerHome } from "./Home.styled"
+import { Comment } from "./components"
 
-import { BoxComment, ContainerHome } from "./Home.styled"
-import { Avatar, ColumnButtons } from "./components"
+const HomePage = () => (
+	<ContainerHome>
+		{mock.comments.map(comment => (
+			<>
+				<Comment
+					comment={comment}
+					mainUser={mock.currentUser.username}
+					key={`comment-box-${comment.id}-${comment.user}`}
+				></Comment>
 
-const HomePage = () => {
-	const isMainUser = comment.user.username === "juliusomo"
-
-	return (
-		<ContainerHome>
-			<BoxComment>
-				<ColumnButtons score={comment.score} />
-
-				<div>
-					<Avatar
-						createdAt={comment.createdAt}
-						isMainUser={isMainUser}
-						name={comment.user.username}
-						src={comment.user.image.png}
-					/>
-
-					{comment.content}
-				</div>
-			</BoxComment>
-		</ContainerHome>
-	)
-}
+				{comment.replies.map(reply => (
+					<Comment
+						comment={reply}
+						mainUser={mock.currentUser.username}
+						key={`reply-box-${reply.id}-${reply.user}`}
+					></Comment>
+				))}
+			</>
+		))}
+	</ContainerHome>
+)
 
 export default HomePage
