@@ -61,43 +61,36 @@ const Avatar = ({
 	isMainUser = false,
 	name,
 	src = "",
-}: React.PropsWithChildren<IAvatarProps>) => {
-	return (
-		<BoxRow>
-			<BoxAvatar>
-				<ImgAvatar
-					alt={"avatar-img"}
-					src={src}
-					width={12}
-					height={12}
-				/>
+}: React.PropsWithChildren<IAvatarProps>) => (
+	<BoxRow>
+		<BoxAvatar>
+			<ImgAvatar alt={"avatar-img"} src={src} width={12} height={12} />
 
-				<Name>{name}</Name>
+			<Name>{name}</Name>
 
-				{isMainUser && <MainUserChip>you</MainUserChip>}
+			{isMainUser && <MainUserChip>you</MainUserChip>}
 
-				<CreatedAt>{createdAt}</CreatedAt>
-			</BoxAvatar>
+			<CreatedAt>{createdAt}</CreatedAt>
+		</BoxAvatar>
 
-			<BoxButtons>
-				{isMainUser ? (
-					<>
-						<Button variant="warning" iconType="delete">
-							&nbsp; Delete
-						</Button>
-
-						<Button variant="terciary" iconType="edit">
-							&nbsp; Edit
-						</Button>
-					</>
-				) : (
-					<Button variant="terciary" iconType="reply">
-						&nbsp; Reply
+		<BoxButtons>
+			{isMainUser ? (
+				<>
+					<Button variant="warning" iconType="delete">
+						&nbsp; Delete
 					</Button>
-				)}
-			</BoxButtons>
-		</BoxRow>
-	)
-}
+
+					<Button variant="terciary" iconType="edit">
+						&nbsp; Edit
+					</Button>
+				</>
+			) : (
+				<Button variant="terciary" iconType="reply">
+					&nbsp; Reply
+				</Button>
+			)}
+		</BoxButtons>
+	</BoxRow>
+)
 
 export default Avatar
