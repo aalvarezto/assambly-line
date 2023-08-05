@@ -8,8 +8,8 @@ const comment = {
 	score: 12,
 	user: {
 		image: {
-			png: "./images/avatars/image-amyrobson.png",
-			webp: "./images/avatars/image-amyrobson.webp",
+			png: "/avatars/image-amyrobson.png",
+			webp: "/avatars/image-amyrobson.webp",
 		},
 		username: "amyrobson",
 	},
@@ -20,6 +20,8 @@ import { BoxComment, ContainerHome } from "./Home.styled"
 import { Avatar, ColumnButtons } from "./components"
 
 const HomePage = () => {
+	const isMainUser = comment.user.username === "juliusomo"
+
 	return (
 		<ContainerHome>
 			<BoxComment>
@@ -27,8 +29,10 @@ const HomePage = () => {
 
 				<div>
 					<Avatar
+						src={comment.user.image.png}
 						name={comment.user.username}
 						createdAt={comment.createdAt}
+						isMainUser={isMainUser}
 					/>
 
 					{comment.content}
