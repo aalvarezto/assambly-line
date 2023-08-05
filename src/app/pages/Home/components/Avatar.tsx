@@ -1,7 +1,7 @@
 import React from "react"
+import Image from "next/image"
 import { styled } from "styled-components"
 import { colors, Button } from "../../../shared"
-import Image from "next/image"
 
 const BoxAvatar = styled.div`
 	display: flex;
@@ -16,20 +16,21 @@ const ImgAvatar = styled(Image)`
 	border-radius: 50%;
 `
 
+const Name = styled.h3`
+	margin-left: 1rem;
+	margin-right: 0.5rem;
+	font-weight: bold;
+	color: ${colors.darkBlue};
+`
+
 const MainUserChip = styled.p`
-	margin-right: 1rem;
+	margin-right: 0.5rem;
 	background-color: ${colors.moderateBlue};
 	font-weight: bold;
 	color: ${colors.white};
 	font-size: small;
 	padding: 0.1rem 0.5rem;
 	border-radius: 10%;
-`
-
-const Name = styled.h3`
-	margin: 0 1rem;
-	font-weight: bold;
-	color: ${colors.darkBlue};
 `
 
 const CreatedAt = styled.p`
@@ -64,7 +65,7 @@ const Avatar = ({
 }: React.PropsWithChildren<IAvatarProps>) => (
 	<BoxRow>
 		<BoxAvatar>
-			<ImgAvatar alt={"avatar-img"} src={src} width={12} height={12} />
+			<ImgAvatar alt={"avatar-img"} src={src} width={120} height={120} />
 
 			<Name>{name}</Name>
 

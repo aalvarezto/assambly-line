@@ -4,14 +4,13 @@ import { Button } from "../../../shared"
 
 const BoxButtons = styled.div`
 	margin-right: 1.5rem;
-	width: 4rem;
+	width: 5rem;
 `
 
 const ButtonSmall = styled(Button)`
 	display: flex;
 	flex-direction: column;
 	font-weight: bold;
-	font-size: small;
 
 	& {
 		border: none;
