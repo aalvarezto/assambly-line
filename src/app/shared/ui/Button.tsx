@@ -1,4 +1,4 @@
-import React, { ButtonHTMLAttributes } from "react"
+import React from "react"
 import Image from "next/image"
 import { styled } from "styled-components"
 import { svgDictionary, themes } from "../theme"
@@ -9,12 +9,13 @@ const ImgReply = styled(Image)`
 
 interface IStyledButtonProps {
 	readonly variant: keyof typeof themes
+	readonly isNotRounded?: boolean
 }
 
 const ButtonComponent = styled.button<IStyledButtonProps>`
 	display: flex;
 	padding: 0 0.5rem;
-	border-radius: 0.5rem;
+	border-radius: ${props => (props.isNotRounded ? "0" : "0.5rem")};
 	height: fit-content;
 	font-weight: bold;
 	align-items: center;
@@ -30,10 +31,11 @@ interface IButtonProps extends React.ComponentProps<typeof ButtonComponent> {
 const Button = ({
 	variant,
 	iconType,
+	isNotRounded = false,
 	children,
 	...props
 }: React.PropsWithChildren<IButtonProps>) => (
-	<ButtonComponent variant={variant} {...props}>
+	<ButtonComponent variant={variant} isNotRounded={isNotRounded} {...props}>
 		{iconType && (
 			<ImgReply
 				alt={iconType}

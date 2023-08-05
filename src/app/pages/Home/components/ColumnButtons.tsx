@@ -10,23 +10,23 @@ const BoxButtons = styled.div`
 const ButtonSmall = styled(Button)`
 	display: flex;
 	flex-direction: column;
-	border-top: none !important;
 	font-weight: bold;
 	font-size: small;
 
 	& {
+		border: none;
 		height: 2rem;
 		width: 100%;
 	}
 
 	&:first-child {
-		border-top-left-radius: 0.4rem !important;
-		border-top-right-radius: 0.4rem !important;
+		border-top-left-radius: 0.5rem;
+		border-top-right-radius: 0.5rem;
 	}
 
 	&:last-child {
-		border-bottom-left-radius: 0.4rem !important;
-		border-bottom-right-radius: 0.4rem !important;
+		border-bottom-left-radius: 0.5rem;
+		border-bottom-right-radius: 0.5rem;
 	}
 `
 
@@ -36,17 +36,21 @@ const ColumnButtons = () => {
 	return (
 		<BoxButtons>
 			<ButtonSmall
-				variant="secondary"
-				onClick={() => setLikes(likes + 1)}
 				iconType="plus"
+				isNotRounded
+				onClick={() => setLikes(likes + 1)}
+				variant="secondary"
 			/>
 
-			<ButtonSmall variant="secondary">{likes}</ButtonSmall>
+			<ButtonSmall isNotRounded variant="secondary">
+				{likes}
+			</ButtonSmall>
 
 			<ButtonSmall
-				variant="secondary"
-				onClick={() => setLikes(likes - 1)}
 				iconType="minus"
+				isNotRounded
+				onClick={() => setLikes(likes - 1)}
+				variant="secondary"
 			/>
 		</BoxButtons>
 	)
