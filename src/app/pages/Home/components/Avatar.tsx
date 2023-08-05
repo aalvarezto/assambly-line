@@ -49,7 +49,7 @@ const BoxButtons = styled.div`
 	flex-direction: row;
 `
 
-interface IVatarProps {
+interface IAvatarProps {
 	readonly createdAt: string
 	readonly isMainUser?: boolean
 	readonly name: string
@@ -61,7 +61,7 @@ const Avatar = ({
 	isMainUser = false,
 	name,
 	src = "",
-}: React.PropsWithChildren<IVatarProps>) => {
+}: React.PropsWithChildren<IAvatarProps>) => {
 	return (
 		<BoxRow>
 			<BoxAvatar>

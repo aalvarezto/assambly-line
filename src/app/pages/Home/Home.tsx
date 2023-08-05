@@ -25,14 +25,14 @@ const HomePage = () => {
 	return (
 		<ContainerHome>
 			<BoxComment>
-				<ColumnButtons />
+				<ColumnButtons score={comment.score} />
 
 				<div>
 					<Avatar
-						src={comment.user.image.png}
-						name={comment.user.username}
 						createdAt={comment.createdAt}
 						isMainUser={isMainUser}
+						name={comment.user.username}
+						src={comment.user.image.png}
 					/>
 
 					{comment.content}

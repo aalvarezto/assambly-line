@@ -30,8 +30,14 @@ const ButtonSmall = styled(Button)`
 	}
 `
 
-const ColumnButtons = () => {
-	const [likes, setLikes] = useState(0)
+interface IColumnButtonsProps {
+	readonly score: number
+}
+
+const ColumnButtons = ({
+	score,
+}: React.PropsWithChildren<IColumnButtonsProps>) => {
+	const [likes, setLikes] = useState(score || 0)
 
 	return (
 		<BoxButtons>
