@@ -1,6 +1,7 @@
 import React from "react"
 import { styled } from "styled-components"
 import { colors, Button } from "../../../shared"
+import Image from "next/image"
 
 const BoxAvatar = styled.div`
 	display: flex;
@@ -8,11 +9,21 @@ const BoxAvatar = styled.div`
 	align-items: center;
 `
 
-const ImgAvatar = styled.div`
+const ImgAvatar = styled(Image)`
 	background-color: ${colors.grayishBlue};
 	width: 2rem;
 	height: 2rem;
 	border-radius: 50%;
+`
+
+const MainUserChip = styled.p`
+	margin-right: 1rem;
+	background-color: ${colors.moderateBlue};
+	font-weight: bold;
+	color: ${colors.white};
+	font-size: small;
+	padding: 0.1rem 0.5rem;
+	border-radius: 10%;
 `
 
 const Name = styled.h3`
@@ -39,34 +50,51 @@ const BoxButtons = styled.div`
 `
 
 interface IVatarProps {
-	src?: string
-	name: string
-	createdAt: string
+	readonly createdAt: string
+	readonly isMainUser?: boolean
+	readonly name: string
+	readonly src?: string
 }
 
-const Avatar = ({ name, createdAt }: React.PropsWithChildren<IVatarProps>) => {
+const Avatar = ({
+	createdAt,
+	isMainUser = false,
+	name,
+	src = "",
+}: React.PropsWithChildren<IVatarProps>) => {
 	return (
 		<BoxRow>
 			<BoxAvatar>
-				<ImgAvatar />
+				<ImgAvatar
+					alt={"avatar-img"}
+					src={src}
+					width={12}
+					height={12}
+				/>
 
 				<Name>{name}</Name>
+
+				{isMainUser && <MainUserChip>you</MainUserChip>}
 
 				<CreatedAt>{createdAt}</CreatedAt>
 			</BoxAvatar>
 
 			<BoxButtons>
-				<Button variant="warning" iconType="delete">
-					&nbsp; Delete
-				</Button>
+				{isMainUser ? (
+					<>
+						<Button variant="warning" iconType="delete">
+							&nbsp; Delete
+						</Button>
 
-				<Button variant="terciary" iconType="reply">
-					&nbsp; Reply
-				</Button>
-
-				<Button variant="terciary" iconType="edit">
-					&nbsp; Edit
-				</Button>
+						<Button variant="terciary" iconType="edit">
+							&nbsp; Edit
+						</Button>
+					</>
+				) : (
+					<Button variant="terciary" iconType="reply">
+						&nbsp; Reply
+					</Button>
+				)}
 			</BoxButtons>
 		</BoxRow>
 	)
