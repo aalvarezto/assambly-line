@@ -6,7 +6,7 @@ const ContainerHome = styled.div`
 	align-items: center;
 	flex-direction: column;
 	padding: 1rem;
-	gap: 1rem;
+	gap: 1.5rem;
 	height: 100vh;
 	background-color: ${colors.lightGray};
 `
