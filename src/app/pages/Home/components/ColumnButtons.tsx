@@ -42,18 +42,18 @@ const ColumnButtons = ({
 		<BoxButtons>
 			<ButtonSmall
 				iconType="plus"
-				isNotRounded
+				$isNotRounded
 				onClick={() => setLikes(likes + 1)}
 				variant="secondary"
 			/>
 
-			<ButtonSmall isNotRounded variant="secondary">
+			<ButtonSmall $isNotRounded variant="secondary">
 				{likes}
 			</ButtonSmall>
 
 			<ButtonSmall
 				iconType="minus"
-				isNotRounded
+				$isNotRounded
 				onClick={() => setLikes(likes - 1)}
 				variant="secondary"
 			/>
