@@ -4,7 +4,8 @@ import { styled } from "styled-components"
 import { svgDictionary, themes } from "../theme"
 
 const ImgReply = styled(Image)`
-	height: fit-content;
+	width: auto;
+	height: auto;
 `
 
 interface IStyledButtonProps {
@@ -47,8 +48,8 @@ const Button = ({
 			<ImgReply
 				alt={iconType}
 				src={svgDictionary[iconType]}
-				width={12}
-				height={12}
+				width={20}
+				height={20}
 			/>
 		)}
 
