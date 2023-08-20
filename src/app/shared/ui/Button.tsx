@@ -24,18 +24,23 @@ const ButtonComponent = styled.button<IStyledButtonProps>`
 	background-color: ${props => themes[props.variant].bgColor};
 `
 
-interface IButtonProps extends React.ComponentProps<typeof ButtonComponent> {
+interface IButtonProps
+	extends Omit<
+		React.ComponentProps<typeof ButtonComponent>,
+		"$isNotRounded"
+	> {
 	readonly iconType?: keyof typeof svgDictionary
+	readonly isNotRounded?: boolean
 }
 
 const Button = ({
 	variant,
 	iconType,
-	$isNotRounded = false,
+	isNotRounded = false,
 	children,
 	...props
 }: React.PropsWithChildren<IButtonProps>) => (
-	<ButtonComponent variant={variant} $isNotRounded={$isNotRounded} {...props}>
+	<ButtonComponent variant={variant} $isNotRounded={isNotRounded} {...props}>
 		{iconType && (
 			<ImgReply
 				alt={iconType}

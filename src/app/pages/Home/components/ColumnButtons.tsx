@@ -11,6 +11,7 @@ const ButtonSmall = styled(Button)`
 	display: flex;
 	flex-direction: column;
 	font-weight: bold;
+	min-width: 2.5rem;
 
 	& {
 		border: none;
@@ -42,18 +43,18 @@ const ColumnButtons = ({
 		<BoxButtons>
 			<ButtonSmall
 				iconType="plus"
-				$isNotRounded
+				isNotRounded
 				onClick={() => setLikes(likes + 1)}
 				variant="secondary"
 			/>
 
-			<ButtonSmall $isNotRounded variant="secondary">
+			<ButtonSmall isNotRounded variant="secondary">
 				{likes}
 			</ButtonSmall>
 
 			<ButtonSmall
 				iconType="minus"
-				$isNotRounded
+				isNotRounded
 				onClick={() => setLikes(likes - 1)}
 				variant="secondary"
 			/>
