@@ -8,7 +8,7 @@ const ImgReply = styled(Image)`
 `
 
 interface IStyledButtonProps {
-	readonly variant: keyof typeof themes
+	readonly $variant: keyof typeof themes
 	readonly $isNotRounded?: boolean
 }
 
@@ -20,27 +20,29 @@ const ButtonComponent = styled.button<IStyledButtonProps>`
 	font-weight: bold;
 	align-items: center;
 	justify-content: center;
-	color: ${props => themes[props.variant].color};
-	background-color: ${props => themes[props.variant].bgColor};
+	color: ${props => themes[props.$variant].color};
+	background-color: ${props => themes[props.$variant].bgColor};
 `
 
-interface IButtonProps
-	extends Omit<
-		React.ComponentProps<typeof ButtonComponent>,
-		"$isNotRounded"
-	> {
+type FilteredButtonProps = Omit<
+	React.ComponentProps<typeof ButtonComponent>,
+	keyof IStyledButtonProps
+>
+
+interface IButtonProps extends FilteredButtonProps {
 	readonly iconType?: keyof typeof svgDictionary
 	readonly isNotRounded?: boolean
+	readonly variant?: keyof typeof themes
 }
 
 const Button = ({
-	variant,
+	variant = "primary",
 	iconType,
 	isNotRounded = false,
 	children,
 	...props
 }: React.PropsWithChildren<IButtonProps>) => (
-	<ButtonComponent variant={variant} $isNotRounded={isNotRounded} {...props}>
+	<ButtonComponent $variant={variant} $isNotRounded={isNotRounded} {...props}>
 		{iconType && (
 			<ImgReply
 				alt={iconType}
