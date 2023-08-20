@@ -44,6 +44,7 @@ const ColumnButtons = ({
 			<ButtonSmall
 				iconType="plus"
 				isNotRounded
+				disabled={score < likes}
 				onClick={() => setLikes(likes + 1)}
 				variant="secondary"
 			/>
@@ -55,6 +56,7 @@ const ColumnButtons = ({
 			<ButtonSmall
 				iconType="minus"
 				isNotRounded
+				disabled={score > likes}
 				onClick={() => setLikes(likes - 1)}
 				variant="secondary"
 			/>
