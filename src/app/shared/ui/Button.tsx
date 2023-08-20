@@ -47,7 +47,7 @@ const Button = ({
 		{iconType && (
 			<ImgReply
 				alt={iconType}
-				src={svgDictionary[iconType]}
+				src={svgDictionary[iconType](props.disabled)}
 				width={20}
 				height={20}
 			/>

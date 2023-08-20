@@ -1,9 +1,11 @@
 const svgDictionary = {
-	delete: "/icon-delete.svg",
-	edit: "/icon-edit.svg",
-	minus: "/icon-minus.svg",
-	plus: "/icon-plus.svg",
-	reply: "/icon-reply.svg",
+	delete: (isDisabled = false) => "/icon-delete.svg",
+	edit: (isDisabled = false) => "/icon-edit.svg",
+	minus: (isDisabled = false) =>
+		`/icon-minus${isDisabled ? "-disabled" : ""}.svg`,
+	plus: (isDisabled = false) =>
+		`/icon-plus${isDisabled ? "-disabled" : ""}.svg`,
+	reply: (isDisabled = false) => "/icon-reply.svg",
 } as const
 
 export default svgDictionary
