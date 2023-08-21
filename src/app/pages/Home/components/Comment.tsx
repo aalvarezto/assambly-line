@@ -6,10 +6,12 @@ import { Avatar, ColumnButtons } from "./index"
 const BoxComment = styled.div`
 	background-color: ${colors.white};
 	border-radius: 0.5rem;
-	max-width: 50rem;
+	width: 100%;
 	padding: 1.5rem;
 	display: flex;
 `
+
+const Paragraph = styled.p``
 
 interface IComment {
 	id: number
@@ -41,7 +43,7 @@ const Comment = ({
 				name={comment.user.username}
 				src={comment.user.image.png}
 			/>
-			{comment.content}
+			<Paragraph>{comment.content}</Paragraph>
 		</div>
 	</BoxComment>
 )
